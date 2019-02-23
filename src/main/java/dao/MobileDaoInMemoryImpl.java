@@ -99,7 +99,7 @@ public class MobileDaoInMemoryImpl implements MobileDao{
     }
 
     @Override
-    public Client getClient() {
+    public Client getClientById(Integer id) {
         return clients.get(0);
     }
 

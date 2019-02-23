@@ -18,8 +18,9 @@ public class MobileServiceImpl implements MobileService{
     private MobileDao dao;
 
     @Override
-    public Client getClient() {
-        return dao.getClient();
+    @Transactional
+    public Client getClientById(Integer id) {
+        return dao.getClientById(id);
     }
 
     @Override

@@ -82,12 +82,8 @@ public class MainController {
 
     @PostMapping("/search")
     public String search(@RequestParam(name="firstName") String firstName, Model model) {
-        Client goal = service.getClient();
-        for (Client client: service.getAllClients()) {
-            if (client.getFirstName().equals(firstName)) {
-                goal = client;
-            }
-        }
+        Integer id = Integer.parseInt(firstName);
+        Client goal = service.getClientById(id);
         model.addAttribute("firstName", goal.getFirstName());
         model.addAttribute("lastName", goal.getLastName());
         model.addAttribute("birthDate", goal.getBirthDate());
