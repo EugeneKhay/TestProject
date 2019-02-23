@@ -10,9 +10,13 @@ import java.util.List;
 public interface MobileDao {
 
     Client getClientById(Integer id);
+
     List<Client> getAllClients();
+
     Contract getContract();
+
     Option getOption();
+
     Tariff getTariff();
 
     void saveClient(Client client);

@@ -24,7 +24,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableWebMvc
-@EnableTransactionManagement
+//@EnableTransactionManagement
 @ComponentScan(basePackages = {"controllers", "dao", "service"})
 public class SpringWebConfig extends WebMvcConfigurerAdapter  {
 
@@ -68,34 +68,34 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter  {
         return new Tariff();
     }
 
-    @Bean
-    public DataSource getDataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/mobileApp");
-        dataSource.setUsername("postgres");
-        dataSource.setPassword("papercut");
-        return dataSource;
-    }
-
-    @Bean
-    public SessionFactory getSessionFactory(DataSource dataSource) {
-        LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
-        Properties properties = new Properties();
-        properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        properties.put("hibernate.show_sql", "true");
-        properties.put("hibernate.hbm2ddl.auto", "update");
-        sessionBuilder.addProperties(properties);
-        sessionBuilder.addAnnotatedClass(Client.class);
-        sessionBuilder.addAnnotatedClass(Option.class);
-        sessionBuilder.addAnnotatedClass(Contract.class);
-        sessionBuilder.addAnnotatedClass(Tariff.class);
-        return sessionBuilder.buildSessionFactory();
-    }
-
-    @Bean
-    public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
-        return new HibernateTransactionManager(sessionFactory);
-    }
+//    @Bean
+//    public DataSource getDataSource() {
+//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//        dataSource.setDriverClassName("org.postgresql.Driver");
+//        dataSource.setUrl("jdbc:postgresql://localhost:5432/mobileApp");
+//        dataSource.setUsername("postgres");
+//        dataSource.setPassword("papercut");
+//        return dataSource;
+//    }
+//
+//    @Bean
+//    public SessionFactory getSessionFactory(DataSource dataSource) {
+//        LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
+//        Properties properties = new Properties();
+//        properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+//        properties.put("hibernate.show_sql", "true");
+//        properties.put("hibernate.hbm2ddl.auto", "update");
+//        sessionBuilder.addProperties(properties);
+//        sessionBuilder.addAnnotatedClass(Client.class);
+//        sessionBuilder.addAnnotatedClass(Option.class);
+//        sessionBuilder.addAnnotatedClass(Contract.class);
+//        sessionBuilder.addAnnotatedClass(Tariff.class);
+//        return sessionBuilder.buildSessionFactory();
+//    }
+//
+//    @Bean
+//    public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
+//        return new HibernateTransactionManager(sessionFactory);
+//    }
 
 }
